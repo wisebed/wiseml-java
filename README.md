@@ -18,48 +18,45 @@ Use in your Maven project
 ======
 
 Add the following dependency to your pom.xml:
-	
-	<dependency>
-		<groupId>de.uniluebeck.itm</groupId>
-		<artifactId>wiseml-java</artifactId>
-		<version>1.0</version>
-	</dependency>
+
+```XML
+<dependency>
+	<groupId>de.uniluebeck.itm</groupId>
+	<artifactId>wiseml-java</artifactId>
+	<version>1.0</version>
+</dependency>
+```
 
 Add the following repositories to your pom.xml:
 
-	<repositories>
-		<!-- ... --->
-		<repository>
-			<id>wisebed-maven-releases-repository</id>
-			<url>http://wisebed.eu/maven/releases/</url>
-			<releases>
-				<enabled>true</enabled>
-			</releases>
-			<snapshots>
-				<enabled>false</enabled>
-			</snapshots>
-		</repository>
-		<!-- ... -->
-	</repositories>
+```XML
+<repository>
+	<id>wisebed-maven-releases-repository</id>
+	<url>http://wisebed.eu/maven/releases/</url>
+	<releases>
+		<enabled>true</enabled>
+	</releases>
+	<snapshots>
+		<enabled>false</enabled>
+	</snapshots>
+</repository>
+```
 
 If you additionally want to get the newest SNAPSHOT versions of the JAXB Bindings for WiseML please also add the
 WISEBED snapshot repository to your project:
 
-    <repositories>
-		<!-- ... -->
-		<repository>
-			<id>wisebed-maven-repository-snapshots</id>
-			<url>http://wisebed.eu/maven/snapshots/</url>
-			<releases>
-				<enabled>false</enabled>
-			</releases>
-			<snapshots>
-				<enabled>true</enabled>
-			</snapshots>
-		</repository>
-		<!-- ... -->
-	</repositories>
-
+```XML
+<repository>
+	<id>wisebed-maven-repository-snapshots</id>
+	<url>http://wisebed.eu/maven/snapshots/</url>
+	<releases>
+		<enabled>false</enabled>
+	</releases>
+	<snapshots>
+		<enabled>true</enabled>
+	</snapshots>
+</repository>
+```
 
 Contact
 ======
