@@ -28,6 +28,7 @@ Add the following dependency to your pom.xml:
 Add the following repositories to your pom.xml:
 
 	<repositories>
+		<!-- ... --->
 		<repository>
 			<id>wisebed-maven-releases-repository</id>
 			<url>http://wisebed.eu/maven/releases/</url>
@@ -38,7 +39,14 @@ Add the following repositories to your pom.xml:
 				<enabled>false</enabled>
 			</snapshots>
 		</repository>
+		<!-- ... -->
+	</repositories>
 
+If you additionally want to get the newest SNAPSHOT versions of the JAXB Bindings for WiseML please also add the
+WISEBED snapshot repository to your project:
+
+    <repositories>
+		<!-- ... -->
 		<repository>
 			<id>wisebed-maven-repository-snapshots</id>
 			<url>http://wisebed.eu/maven/snapshots/</url>
@@ -49,6 +57,7 @@ Add the following repositories to your pom.xml:
 				<enabled>true</enabled>
 			</snapshots>
 		</repository>
+		<!-- ... -->
 	</repositories>
 
 
