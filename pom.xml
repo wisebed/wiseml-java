@@ -70,10 +70,6 @@
 						</configuration>
 					</execution>
 				</executions>
-				<configuration>
-					<packageName>com.example.myschema</packageName>
-					<!-- The name of your generated source package -->
-				</configuration>
 			</plugin>
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
