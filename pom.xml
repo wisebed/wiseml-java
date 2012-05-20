@@ -6,7 +6,7 @@
 	<groupId>eu.wisebed</groupId>
 	<artifactId>wiseml</artifactId>
 	<packaging>jar</packaging>
-	<version>1.0</version>
+	<version>1.0-SNAPSHOT</version>
 	<name>WiseML JAXB Bindings</name>
 
 	<dependencyManagement>
@@ -70,10 +70,6 @@
 						</configuration>
 					</execution>
 				</executions>
-				<configuration>
-					<packageName>com.example.myschema</packageName>
-					<!-- The name of your generated source package -->
-				</configuration>
 			</plugin>
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
