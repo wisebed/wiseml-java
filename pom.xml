@@ -95,24 +95,6 @@
 						</goals>
 					</execution>
 				</executions>
-				<!--<configuration>
-					<docletArtifact>
-						<groupId>com.google.doclava</groupId>
-						<artifactId>doclava</artifactId>
-						<version>1.0.3</version>
-					</docletArtifact>
-					<doclet>com.google.doclava.Doclava</doclet>
-					<bootclasspath>${sun.boot.class.path}</bootclasspath>
-					<additionalparam>
-						-quiet
-						-federate JDK http://download.oracle.com/javase/6/docs/api/index.html?
-						-federationxml JDK http://doclava.googlecode.com/svn/static/api/openjdk-6.xml
-						-hdf project.name "${project.name}"
-						-d ${project.build.directory}/apidocs
-					</additionalparam>
-					<useStandardDocletOptions>false</useStandardDocletOptions>
-					<additionalJOption>-J-Xmx1024m</additionalJOption>
-				</configuration>-->
 			</plugin>
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
@@ -143,14 +125,14 @@
 
 	<distributionManagement>
 		<repository>
-			<id>wisebed-maven-repository-releases</id>
-			<name>WISEBED Maven releases repository</name>
-			<url>scpexe://itm01.itm.uni-luebeck.de/www/wisebeds/maven/releases</url>
+			<id>itm-maven-repository-releases</id>
+			<name>ITM UzL Maven releases repository</name>
+			<url>http://maven.itm.uni-luebeck.de/content/repositories/releases/</url>
 		</repository>
 		<snapshotRepository>
-			<id>wisebed-maven-repository-snapshots</id>
-			<name>WISEBED Maven snapshots repository</name>
-			<url>scpexe://itm01.itm.uni-luebeck.de/www/wisebeds/maven/snapshots</url>
+			<id>itm-maven-repository-snapshots</id>
+			<name>ITM UzL Maven snapshots repository</name>
+			<url>http://maven.itm.uni-luebeck.de/content/repositories/snapshots/</url>
 		</snapshotRepository>
 	</distributionManagement>
 
