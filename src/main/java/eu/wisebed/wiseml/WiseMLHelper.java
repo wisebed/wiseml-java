@@ -1,38 +1,15 @@
 package eu.wisebed.wiseml;
 
-import com.google.common.base.Function;
-import com.google.common.base.Joiner;
-import com.google.common.collect.Lists;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import javax.xml.bind.JAXB;
 import java.io.*;
-import java.util.LinkedList;
-import java.util.List;
+import java.util.*;
 
 public class WiseMLHelper {
 
 	private static final Logger log = LoggerFactory.getLogger(WiseMLHelper.class);
-
-	public static Function<Setup.Node, String> FUNCTION_NODE_TO_STRING = new Function<Setup.Node, String>() {
-		@Override
-		public String apply(final Setup.Node node) {
-			return WiseMLHelper.toString(node);
-		}
-	};
-
-	public static Function<List<Setup.Node>, List<String>> FUNCTION_NODE_LIST_TO_STRING_LIST =
-			new Function<List<Setup.Node>, List<String>>() {
-				@Override
-				public List<String> apply(final List<Setup.Node> nodes) {
-					List<String> strings = Lists.newArrayListWithCapacity(nodes.size());
-					for (Setup.Node node : nodes) {
-						strings.add(FUNCTION_NODE_TO_STRING.apply(node));
-					}
-					return strings;
-				}
-			};
 
 	private WiseMLHelper() {
 		// forbid access
@@ -115,9 +92,7 @@ public class WiseMLHelper {
 	 */
 	@SuppressWarnings("unused")
 	public static List<Setup.Node> getNodes(final String serializedWiseML, final Iterable<String> types) {
-		List<String> typesList = Lists.newArrayList(types);
-		String[] typesArray = typesList.toArray(new String[typesList.size()]);
-		return getNodes(deserialize(serializedWiseML), typesArray);
+		return getNodes(deserialize(serializedWiseML), types);
 	}
 
 	/**
@@ -150,9 +125,23 @@ public class WiseMLHelper {
 	 */
 	@SuppressWarnings("unused")
 	public static List<Setup.Node> getNodes(final Wiseml wiseml, final Iterable<String> types) {
-		List<String> typesList = Lists.newArrayList(types);
-		String[] typesArray = typesList.toArray(new String[typesList.size()]);
-		return getNodes(wiseml, typesArray);
+
+		List<Setup.Node> nodes = new ArrayList<Setup.Node>();
+
+		for (Setup.Node node : wiseml.getSetup().getNode()) {
+			if (types == null || !types.iterator().hasNext()) {
+				nodes.add(node);
+			} else {
+				// if "containsIgnoreCase"...
+				for (String nodeType : types) {
+					if (nodeType.equalsIgnoreCase(node.getNodeType())) {
+						nodes.add(node);
+					}
+				}
+			}
+		}
+
+		return nodes;
 	}
 
 	/**
@@ -168,24 +157,9 @@ public class WiseMLHelper {
 	 */
 	@SuppressWarnings("unused")
 	public static List<Setup.Node> getNodes(final Wiseml wiseml, final String... types) {
-
-		List<String> nodeTypes = types == null ? null : Lists.newArrayList(types);
-		List<Setup.Node> nodes = Lists.newArrayList();
-
-		for (Setup.Node node : wiseml.getSetup().getNode()) {
-			if (types == null || types.length == 0) {
-				nodes.add(node);
-			} else {
-				// if "containsIgnoreCase"...
-				for (String nodeType : nodeTypes) {
-					if (nodeType.equalsIgnoreCase(node.getNodeType())) {
-						nodes.add(node);
-					}
-				}
-			}
-		}
-
-		return nodes;
+		List<String> typesList = new ArrayList<String>();
+		Collections.addAll(typesList, types);
+		return getNodes(wiseml, typesList);
 	}
 
 	/**
@@ -216,9 +190,11 @@ public class WiseMLHelper {
 	 */
 	@SuppressWarnings("unused")
 	public static List<String> getNodeUrns(final String serializedWiseML, final Iterable<String> types) {
-		List<String> typesList = Lists.newArrayList(types);
-		String[] typesArray = typesList.toArray(new String[typesList.size()]);
-		return getNodeUrns(serializedWiseML, typesArray);
+		List<String> nodeUrns = new LinkedList<String>();
+		for (Setup.Node node : getNodes(serializedWiseML, types)) {
+			nodeUrns.add(node.getId());
+		}
+		return nodeUrns;
 	}
 
 	/**
@@ -235,14 +211,9 @@ public class WiseMLHelper {
 	 */
 	@SuppressWarnings("unused")
 	public static List<String> getNodeUrns(final String serializedWiseML, final String... types) {
-
-		List<String> nodeUrns = new LinkedList<String>();
-
-		for (Setup.Node node : getNodes(serializedWiseML, types)) {
-			nodeUrns.add(node.getId());
-		}
-
-		return nodeUrns;
+		List<String> typesList = new ArrayList<String>();
+		Collections.addAll(typesList, types);
+		return getNodeUrns(serializedWiseML, typesList);
 	}
 
 	/**
@@ -347,11 +318,11 @@ public class WiseMLHelper {
 	 */
 	@SuppressWarnings("unused")
 	public static String toString(List<Capability> capabilities) {
-		List<String> strings = Lists.newArrayListWithCapacity(capabilities.size());
+		List<String> strings = new ArrayList<String>(capabilities.size());
 		for (Capability capability : capabilities) {
 			strings.add(toString(capability));
 		}
-		return "[" + Joiner.on(", ").join(strings) + "]";
+		return Arrays.toString(strings.toArray());
 	}
 
 	/**
