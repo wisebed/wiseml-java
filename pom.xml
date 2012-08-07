@@ -6,7 +6,7 @@
 	<groupId>eu.wisebed</groupId>
 	<artifactId>wiseml</artifactId>
 	<packaging>jar</packaging>
-	<version>1.0.3-SNAPSHOT</version>
+	<version>1.0.3</version>
 	<name>WiseML JAXB Bindings</name>
 
 	<dependencies>
