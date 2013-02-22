@@ -12,6 +12,11 @@
 
 	<dependencies>
 		<dependency>
+			<groupId>org.jvnet.jaxb2_commons</groupId>
+			<artifactId>jaxb2-basics-runtime</artifactId>
+			<version>0.6.4</version>
+		</dependency>
+		<dependency>
 			<groupId>org.slf4j</groupId>
 			<artifactId>slf4j-api</artifactId>
 			<version>1.6.4</version>
@@ -86,12 +91,12 @@
 						</goals>
 						<configuration>
 							<generatePackage>eu.wisebed.wiseml</generatePackage>
-							<!--
 							<extension>true</extension>
 							<args>
 								<arg>-XtoString</arg>
 								<arg>-Xequals</arg>
 								<arg>-XhashCode</arg>
+								<arg>-Xfluent-api</arg>
 							</args>
 							<plugins>
 								<plugin>
@@ -99,8 +104,12 @@
 									<artifactId>jaxb2-basics</artifactId>
 									<version>0.6.4</version>
 								</plugin>
+								<dependency>
+									<groupId>org.jvnet.jaxb2_commons</groupId>
+									<artifactId>jaxb2-fluent-api</artifactId>
+									<version>3.0</version>
+								</dependency>
 							</plugins>
-							-->
 						</configuration>
 					</execution>
 				</executions>
