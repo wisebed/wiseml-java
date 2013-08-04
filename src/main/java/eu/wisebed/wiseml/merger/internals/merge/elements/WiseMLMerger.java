@@ -52,7 +52,7 @@ public class WiseMLMerger extends WiseMLElementMerger {
 		WiseMLTreeReader[] reader = findSequenceReaders(WiseMLSequence.Scenario);
 
 		if (reader == null) {
-			log.warn("Scenario List is empty - skip this");
+			log.debug("Scenario List is empty - skipping...");
 		} else {
 			queue.add(new ScenarioListMerger(
 					this,
@@ -74,7 +74,7 @@ public class WiseMLMerger extends WiseMLElementMerger {
 		WiseMLTreeReader[] reader = findSequenceReaders(WiseMLSequence.Scenario);
 
 		if (reader == null) {
-			log.warn("Trace List is empty - skip this");
+			log.debug("Trace List is empty - skipping...");
 		} else {
 			// add list merger to queue
 			queue.add(new TraceListMerger(
