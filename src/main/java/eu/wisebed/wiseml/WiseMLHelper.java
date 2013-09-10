@@ -346,38 +346,8 @@ public class WiseMLHelper {
 		return "Capability{" +
 				"_default='" + capability.getDefault() + '\'' +
 				", name='" + capability.getName() + '\'' +
-				", datatype=" + toString(capability.getDatatype()) +
-				", unit=" + toString(capability.getUnit()) +
-				'}';
-	}
-
-	/**
-	 * Returns a String representation of {@code unit}.
-	 *
-	 * @param unit
-	 * 		the {@link eu.wisebed.wiseml.Units} instance
-	 *
-	 * @return a String representation of {@code unit}
-	 */
-	@SuppressWarnings("unused")
-	private static String toString(final Units unit) {
-		return "Units{" +
-				"value='" + unit.value() + '\'' +
-				'}';
-	}
-
-	/**
-	 * Returns a String representation of {@code datatype}.
-	 *
-	 * @param datatype
-	 * 		the {@link eu.wisebed.wiseml.Dtypes} instance
-	 *
-	 * @return a String representation of {@code datatype}
-	 */
-	@SuppressWarnings("unused")
-	private static String toString(final Dtypes datatype) {
-		return "Dtypes{" +
-				"value='" + datatype.value() + '\'' +
+				", datatype=" + capability.getDatatype() +
+				", unit=" + capability.getUnit() +
 				'}';
 	}
 

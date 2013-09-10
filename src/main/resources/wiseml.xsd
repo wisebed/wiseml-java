@@ -130,8 +130,8 @@
 	<xs:element name="virtual" type="xs:boolean" />
 	<xs:element name="rssi">
 		<xs:complexType>
-			<xs:attribute name="datatype" use="required" type="wiseml:dtypes" />
-			<xs:attribute name="unit" use="required" type="wiseml:units" />
+			<xs:attribute name="datatype" use="required" type="xs:string" />
+			<xs:attribute name="unit" use="required" type="xs:string" />
 			<xs:attribute name="default" use="required" />
 		</xs:complexType>
 	</xs:element>
@@ -141,13 +141,13 @@
 			<xs:sequence>
 				<xs:element ref="wiseml:name" />
 				<xs:element ref="wiseml:datatype" />
-				<xs:element name="unit" type="wiseml:units" />
+				<xs:element name="unit" type="xs:string" />
 				<xs:element ref="wiseml:default" />
 			</xs:sequence>
 		</xs:complexType>
 	</xs:element>
 	<xs:element name="name" type="xs:string" />
-	<xs:element name="datatype" type="wiseml:dtypes" />
+	<xs:element name="datatype" type="xs:string" />
 	<xs:element name="default" type="xs:string" />
 	<!-- SCENARIO -->
 	<xs:element name="scenario">
@@ -253,27 +253,6 @@
 		</xs:sequence>
 	</xs:group>
 	<!-- DATA TYPES -->
-	<xs:simpleType name="dtypes">
-		<xs:restriction base="xs:token">
-			<xs:enumeration value="decimal" />
-			<xs:enumeration value="integer" />
-		</xs:restriction>
-	</xs:simpleType>
-	<xs:simpleType name="units">
-		<xs:restriction base="xs:token">
-			<xs:enumeration value="meters" />
-			<xs:enumeration value="centimeters" />
-			<xs:enumeration value="radians" />
-			<xs:enumeration value="degrees" />
-			<xs:enumeration value="seconds" />
-			<xs:enumeration value="milliseconds" />
-			<xs:enumeration value="dBm" />
-			<xs:enumeration value="kelvin" />
-			<xs:enumeration value="percentage" />
-			<xs:enumeration value="lux" />
-			<xs:enumeration value="raw" />
-		</xs:restriction>
-	</xs:simpleType>
 	<xs:simpleType name="interpolation">
 		<xs:restriction base="xs:token">
 			<xs:enumeration value="none" />
@@ -283,12 +262,6 @@
 			<xs:enumeration value="spline" />
 		</xs:restriction>
 	</xs:simpleType>
-	<xs:attributeGroup name="unit">
-		<xs:attribute name="unit" use="required" type="wiseml:units" />
-	</xs:attributeGroup>
-	<xs:attributeGroup name="dtype">
-		<xs:attribute name="datatype" use="required" type="wiseml:dtypes" />
-	</xs:attributeGroup>
 	<xs:complexType name="coordinate">
 		<xs:sequence>
 			<xs:element ref="wiseml:x" />
