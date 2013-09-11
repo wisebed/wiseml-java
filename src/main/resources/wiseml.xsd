@@ -141,7 +141,7 @@
 			<xs:sequence>
 				<xs:element ref="wiseml:name" />
 				<xs:element ref="wiseml:datatype" />
-				<xs:element name="unit" type="xs:string" />
+				<xs:element name="unit" minOccurs="0" type="xs:string" />
 				<xs:element ref="wiseml:default" />
 			</xs:sequence>
 		</xs:complexType>
