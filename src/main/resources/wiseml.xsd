@@ -264,16 +264,54 @@
 	</xs:simpleType>
 	<xs:complexType name="coordinate">
 		<xs:sequence>
-			<xs:element ref="wiseml:x" />
-			<xs:element ref="wiseml:y" />
-			<xs:element minOccurs="0" ref="wiseml:z" />
-			<xs:element minOccurs="0" ref="wiseml:phi" />
-			<xs:element minOccurs="0" ref="wiseml:theta" />
+			<xs:element name="type" type="coordinateType" />
+			<xs:choice>
+				<xs:element name="outdoor_coordinates" type="OutdoorCoordinatesType" />
+				<xs:element name="indoor_coordinates" type="IndoorCoordinatesType" />
+			</xs:choice>
 		</xs:sequence>
 	</xs:complexType>
-	<xs:element name="x" type="xs:double" />
-	<xs:element name="y" type="xs:double" />
-	<xs:element name="z" type="xs:double" />
-	<xs:element name="phi" type="xs:double" />
-	<xs:element name="theta" type="xs:double" />
+	<xs:simpleType name="coordinateType">
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="INDOOR" />
+			<xs:enumeration value="OUTDOOR" />
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:complexType name="OutdoorCoordinatesType">
+		<xs:sequence>
+			<xs:group minOccurs="0" ref="GlobalCoordinates" />
+			<xs:group minOccurs="0" ref="CartesianCoordinates" />
+			<xs:group minOccurs="0" ref="SphericalCoordinates" />
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:complexType name="IndoorCoordinatesType">
+		<xs:sequence>
+			<xs:element name="building" minOccurs="0" type="xs:string" />
+			<xs:element name="floor" minOccurs="0" type="xs:string" />
+			<xs:element name="room" minOccurs="0" type="xs:string" />
+			<xs:group ref="CartesianCoordinates" />
+			<xs:element name="backgroundimage" minOccurs="0" type="xs:string" />
+		</xs:sequence>
+	</xs:complexType>
+	<xs:group name="GlobalCoordinates">
+		<xs:sequence>
+			<xs:element name="longitude" type="xs:float" />
+			<xs:element name="latitude" type="xs:float" />
+		</xs:sequence>
+	</xs:group>
+	<xs:group name="CartesianCoordinates">
+		<xs:sequence>
+			<xs:element name="x" type="xs:float" />
+			<xs:element name="y" type="xs:float" />
+			<xs:element name="z" minOccurs="0" type="xs:float" />
+		</xs:sequence>
+	</xs:group>
+	<xs:group name="SphericalCoordinates">
+		<xs:sequence>
+			<xs:element name="rho" type="xs:float" />
+			<xs:element name="phi" type="xs:float" />
+			<xs:element name="theta" type="xs:float" />
+		</xs:sequence>
+	</xs:group>
 </xs:schema>
