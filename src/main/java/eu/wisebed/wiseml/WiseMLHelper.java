@@ -8,6 +8,7 @@ import javax.xml.bind.JAXB;
 import java.io.*;
 import java.util.*;
 
+@SuppressWarnings("unused")
 public class WiseMLHelper {
 
 	private static final Logger log = LoggerFactory.getLogger(WiseMLHelper.class);
@@ -381,13 +382,13 @@ public class WiseMLHelper {
 	 */
 	@SuppressWarnings("unused")
 	private static String toString(final Coordinate position) {
-		return "Coordinate{" +
-				"x=" + position.getX() +
-				", y=" + position.getY() +
-				", z=" + position.getZ() +
-				", phi=" + position.getPhi() +
-				", theta=" + position.getTheta() +
-				'}';
+		switch (position.getType()) {
+			case INDOOR:
+				return position.getIndoorCoordinates().toString();
+			case OUTDOOR:
+				return position.getOutdoorCoordinates().toString();
+		}
+		throw new RuntimeException("Unknown coordinate type!");
 	}
 
 }

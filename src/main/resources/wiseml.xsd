@@ -8,8 +8,11 @@
   Created by Martin Bor (m.c.bor@tudelt.nl) on 2010-03-16.
   Copyright 2010 TU Delft. All rights reserved.
 -->
-<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified"
-		   targetNamespace="http://wisebed.eu/ns/wiseml/1.0" xmlns:wiseml="http://wisebed.eu/ns/wiseml/1.0">
+<xs:schema elementFormDefault="qualified"
+		   xmlns:xs="http://www.w3.org/2001/XMLSchema"
+		   xmlns="http://wisebed.eu/ns/wiseml/1.0"
+		   targetNamespace="http://wisebed.eu/ns/wiseml/1.0"
+		   xmlns:wiseml="http://wisebed.eu/ns/wiseml/1.0">
 	<!-- ROOT -->
 	<xs:element name="wiseml">
 		<xs:complexType>
@@ -252,6 +255,7 @@
 			</xs:element>
 		</xs:sequence>
 	</xs:group>
+
 	<!-- DATA TYPES -->
 	<xs:simpleType name="interpolation">
 		<xs:restriction base="xs:token">
@@ -262,6 +266,7 @@
 			<xs:enumeration value="spline" />
 		</xs:restriction>
 	</xs:simpleType>
+
 	<xs:complexType name="coordinate">
 		<xs:sequence>
 			<xs:element name="type" type="coordinateType" />
@@ -284,7 +289,6 @@
 			<xs:group minOccurs="0" ref="SphericalCoordinates" />
 		</xs:sequence>
 	</xs:complexType>
-
 	<xs:complexType name="IndoorCoordinatesType">
 		<xs:sequence>
 			<xs:element name="building" minOccurs="0" type="xs:string" />
@@ -314,4 +318,5 @@
 			<xs:element name="theta" type="xs:float" />
 		</xs:sequence>
 	</xs:group>
+
 </xs:schema>
