@@ -10,9 +10,9 @@
 -->
 <xs:schema elementFormDefault="qualified"
 		   xmlns:xs="http://www.w3.org/2001/XMLSchema"
-		   xmlns="http://wisebed.eu/ns/wiseml/1.0"
-		   targetNamespace="http://wisebed.eu/ns/wiseml/1.0"
-		   xmlns:wiseml="http://wisebed.eu/ns/wiseml/1.0">
+		   xmlns="http://wisebed.eu/ns/wiseml/2.0"
+		   targetNamespace="http://wisebed.eu/ns/wiseml/2.0"
+		   xmlns:wiseml="http://wisebed.eu/ns/wiseml/2.0">
 	<!-- ROOT -->
 	<xs:element name="wiseml">
 		<xs:complexType>
@@ -24,7 +24,7 @@
 			<xs:attribute name="version" use="required">
 				<xs:simpleType>
 					<xs:restriction base="xs:token">
-						<xs:enumeration value="1.0" />
+						<xs:enumeration value="2.0" />
 					</xs:restriction>
 				</xs:simpleType>
 			</xs:attribute>
@@ -46,29 +46,21 @@
 			<xs:element minOccurs="0" ref="wiseml:origin" />
 			<xs:element minOccurs="0" ref="wiseml:timeinfo" />
 			<xs:element minOccurs="0" ref="wiseml:interpolation" />
-			<xs:element minOccurs="0" ref="wiseml:coordinateType" />
 			<xs:element minOccurs="0" ref="wiseml:description" />
 		</xs:sequence>
 	</xs:group>
 	<xs:element name="origin" type="wiseml:coordinate" />
 	<xs:element name="timeinfo" type="wiseml:timeinfo" />
 	<xs:element name="interpolation" type="wiseml:interpolation" />
-	<xs:element name="coordinateType" type="xs:string" />
 	<xs:element name="description" type="xs:string" />
 	<xs:complexType name="timeinfo">
 		<xs:sequence>
 			<xs:element ref="wiseml:start" />
-			<xs:choice>
-				<xs:element ref="wiseml:end" />
-				<xs:element ref="wiseml:duration" />
-			</xs:choice>
-			<xs:element ref="wiseml:unit" />
+			<xs:element ref="wiseml:end" />
 		</xs:sequence>
 	</xs:complexType>
 	<xs:element name="start" type="xs:dateTime" />
 	<xs:element name="end" type="xs:dateTime" />
-	<xs:element name="duration" type="xs:string" />
-	<xs:element name="unit" type="xs:string" />
 	<!-- DEFAULTS -->
 	<xs:element name="defaults">
 		<xs:complexType>
@@ -227,7 +219,7 @@
 			</xs:choice>
 		</xs:sequence>
 	</xs:group>
-	<xs:element name="timestamp" type="xs:string" />
+	<xs:element name="timestamp" type="xs:dateTime" />
 	<xs:group name="node.traceitem">
 		<xs:sequence>
 			<xs:element name="node">
