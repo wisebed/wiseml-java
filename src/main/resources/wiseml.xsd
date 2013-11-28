@@ -292,22 +292,22 @@
 	</xs:complexType>
 	<xs:group name="GlobalCoordinates">
 		<xs:sequence>
-			<xs:element name="longitude" type="xs:float" />
-			<xs:element name="latitude" type="xs:float" />
+			<xs:element name="longitude" type="xs:double" />
+			<xs:element name="latitude" type="xs:double" />
 		</xs:sequence>
 	</xs:group>
 	<xs:group name="CartesianCoordinates">
 		<xs:sequence>
-			<xs:element name="x" type="xs:float" />
-			<xs:element name="y" type="xs:float" />
-			<xs:element name="z" minOccurs="0" type="xs:float" />
+			<xs:element name="x" type="xs:double" />
+			<xs:element name="y" type="xs:double" />
+			<xs:element name="z" minOccurs="0" type="xs:double" />
 		</xs:sequence>
 	</xs:group>
 	<xs:group name="SphericalCoordinates">
 		<xs:sequence>
-			<xs:element name="rho" type="xs:float" />
-			<xs:element name="phi" type="xs:float" />
-			<xs:element name="theta" type="xs:float" />
+			<xs:element name="rho" type="xs:double" />
+			<xs:element name="phi" type="xs:double" />
+			<xs:element name="theta" type="xs:double" />
 		</xs:sequence>
 	</xs:group>
 
